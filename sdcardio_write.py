@@ -5,8 +5,8 @@ import board
 import storage
 
 # Connect to the card and mount the filesystem.
-spi = busio.SPI(board.SDCARD_SCLK, board.SDCARD_MOSI, board.SDCARD_MISO)
-cs = digitalio.DigitalInOut(board.SDCARD_CS)
+spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
+cs = digitalio.DigitalInOut(board.SD_CS)
 sdcard = adafruit_sdcard.SDCard(spi, cs)
 vfs = storage.VfsFat(sdcard)
 storage.mount(vfs, "/sd")
